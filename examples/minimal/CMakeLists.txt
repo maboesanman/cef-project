@@ -56,7 +56,8 @@ endif()
 
 if(OS_LINUX)
   # Executable target.
-  add_executable(${EXAMPLE_TARGET} ${EXAMPLE_SRCS})
+  add_library(${EXAMPLE_TARGET} STATIC ${EXAMPLE_SRCS})
+  # add_executable(${EXAMPLE_TARGET} ${EXAMPLE_SRCS})
   SET_EXAMPLE_EXECUTABLE_TARGET_PROPERTIES(${EXAMPLE_TARGET})
   add_dependencies(${EXAMPLE_TARGET} shared)
   target_link_libraries(${EXAMPLE_TARGET} shared)
@@ -85,7 +86,8 @@ if(OS_MAC)
   endif()
 
   # Main app bundle target.
-  add_executable(${EXAMPLE_TARGET} MACOSX_BUNDLE ${EXAMPLE_SRCS} ${EXAMPLE_RESOURCES_SRCS})
+  add_library(${EXAMPLE_TARGET} STATIC ${EXAMPLE_SRCS} ${EXAMPLE_RESOURCES_SRCS})
+  # add_executable(${EXAMPLE_TARGET} MACOSX_BUNDLE ${EXAMPLE_SRCS} ${EXAMPLE_RESOURCES_SRCS})
   SET_EXAMPLE_EXECUTABLE_TARGET_PROPERTIES(${EXAMPLE_TARGET})
   add_dependencies(${EXAMPLE_TARGET} shared)
   target_link_libraries(${EXAMPLE_TARGET} shared)
@@ -181,7 +183,8 @@ if(OS_WINDOWS)
   SET_EXAMPLE_SOURCE_GROUPS("${EXAMPLE_SRCS}")
 
   # Executable target.
-  add_executable(${EXAMPLE_TARGET} WIN32 ${EXAMPLE_SRCS})
+  add_library(${EXAMPLE_TARGET} STATIC ${EXAMPLE_SRCS})
+  # add_executable(${EXAMPLE_TARGET} WIN32 ${EXAMPLE_SRCS})
   SET_EXAMPLE_EXECUTABLE_TARGET_PROPERTIES(${EXAMPLE_TARGET})
   add_dependencies(${EXAMPLE_TARGET} shared)
   target_link_libraries(${EXAMPLE_TARGET} shared)

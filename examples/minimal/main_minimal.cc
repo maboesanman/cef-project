@@ -16,7 +16,13 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
   return shared::wWinMain(hInstance);
 }
 #else
+
+// mark as extern "C" to be usable from rust
 int main(int argc, char* argv[]) {
+  return shared::main(argc, argv);
+}
+
+extern "C" int main_ffi(int argc, char* argv[]) {
   return shared::main(argc, argv);
 }
 #endif
